@@ -113,6 +113,11 @@ public abstract class BaseBuilder {
       return null;
     }
     try {
+      /**
+       * Getting class instance from {@link TypeAliasRegistry#resolveAlias(String)}, there is a memory map in {@link typeAliasRegistry}
+       * and if the given name of the class instance  existed, will fetch the instance from the memory map, or else using
+       * {@link org.apache.ibatis.io.Resources#classForName(String)} to create the class instance
+       */
       return resolveAlias(alias);
     } catch (Exception e) {
       throw new BuilderException("Error resolving class. Cause: " + e, e);

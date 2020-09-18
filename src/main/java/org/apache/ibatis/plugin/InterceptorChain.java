@@ -24,6 +24,9 @@ import java.util.List;
  */
 public class InterceptorChain {
 
+  /**
+   * define a list for containing {@link Interceptor}s
+   */
   private final List<Interceptor> interceptors = new ArrayList<>();
 
   public Object pluginAll(Object target) {

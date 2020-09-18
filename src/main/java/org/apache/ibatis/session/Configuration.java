@@ -575,6 +575,16 @@ public class Configuration {
     return MetaObject.forObject(object, objectFactory, objectWrapperFactory, reflectorFactory);
   }
 
+  /**
+   * the following 4 method {@linkplain #newParameterHandler(MappedStatement, Object, BoundSql)},
+   * {@linkplain #newResultSetHandler(Executor, MappedStatement, RowBounds, ParameterHandler, ResultHandler, BoundSql)},
+   * {@linkplain #newStatementHandler(Executor, MappedStatement, Object, RowBounds, ResultHandler, BoundSql)},
+   * {@linkplain #newExecutor(Transaction, ExecutorType)} will be called while mybatis executing CRUD operation, and the
+   * executing order is {@link Executor}, {@link ParameterHandler}, {@link ResultSetHandler} ,{@link StatementHandler}
+   *
+   */
+
+
   public ParameterHandler newParameterHandler(MappedStatement mappedStatement, Object parameterObject, BoundSql boundSql) {
     ParameterHandler parameterHandler = mappedStatement.getLang().createParameterHandler(mappedStatement, parameterObject, boundSql);
     parameterHandler = (ParameterHandler) interceptorChain.pluginAll(parameterHandler);

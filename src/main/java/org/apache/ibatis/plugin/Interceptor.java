@@ -24,6 +24,7 @@ public interface Interceptor {
 
   Object intercept(Invocation invocation) throws Throwable;
 
+  // todo default 关键字的含义
   default Object plugin(Object target) {
     return Plugin.wrap(target, this);
   }
